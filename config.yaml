@@ -1,17 +1,14 @@
 ---
-version: 3.11.0
+version: 4.5.1
 hassio_api: true
 slug: nginx_proxy
 name: NGINX Home Assistant SSL proxy
 description: An SSL/TLS proxy
 url: https://github.com/home-assistant/addons/tree/master/nginx_proxy
 arch:
-  - armhf
-  - armv7
   - aarch64
   - amd64
-  - i386
-#image: homeassistant/{arch}-addon-nginx_proxy
+image: homeassistant/{arch}-addon-nginx_proxy
 init: false
 map:
   - ssl
@@ -22,6 +19,8 @@ options:
   certfile: fullchain.pem
   keyfile: privkey.pem
   cloudflare: false
+  use_ssl_backend: false
+  client_max_body_size_megabytes: 1
   customize:
     active: false
     default: nginx_proxy_default*.conf
@@ -29,6 +28,7 @@ options:
   real_ip_from: []
 ports:
   443/tcp: 443
+  443/udp: null
   80/tcp: null
 schema:
   domain: str
@@ -36,6 +36,8 @@ schema:
   certfile: str
   keyfile: str
   cloudflare: bool
+  use_ssl_backend: bool
+  client_max_body_size_megabytes: int(0,)
   customize:
     active: bool
     default: str
