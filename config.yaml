@@ -8,7 +8,7 @@ url: https://github.com/Cronvs/hassio-nginx-addon
 arch:
   - aarch64
   - amd64
-image: ghcr.io/cronvs/{arch}-hassio-nginx-addon
+image: ghcr.io/cronvs/hassio-nginx-addon
 init: false
 map:
   - ssl
