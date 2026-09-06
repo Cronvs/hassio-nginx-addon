@@ -1,0 +1,15 @@
+name: Build and Publish Add-on
+
+on:
+  push:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Add-on
+    uses: home-assistant/actions/.github/workflows/builder.yaml@master
+    with:
+      args: --amd64 --aarch64 --target /data --docker-hub ghcr.io/cronvs --image hassio-nginx-proxy
+    secrets:
+      registry-token: ${{ secrets.GITHUB_TOKEN }}
