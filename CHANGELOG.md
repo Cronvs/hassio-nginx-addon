@@ -96,7 +96,7 @@
 
 ## 3.3.0
 
-- Check certificate renewal daily and reload nginx if necessary
+- Check certificate renewal hourly and reload nginx if necessary
 - Migrate add-on layout to S6 Overlay
 
 ## 3.2.0
